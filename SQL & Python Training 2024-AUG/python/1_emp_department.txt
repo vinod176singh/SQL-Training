@@ -1,0 +1,32 @@
+import pandas as pd
+from datetime import datetime
+
+# Creating the Departments dataframe using list of tuples
+departments_data = [
+    (1, 'Engineering', 'New York'),
+    (2, 'Sales', 'Los Angeles'),
+    (3, 'Marketing', 'Chicago'),
+    (4, 'Human Resources', 'Houston')
+]
+
+departments_df = pd.DataFrame(departments_data, columns=['DEPARTMENT_ID', 'NAME', 'LOCATION'])
+
+# Creating the Employees dataframe using list of tuples
+employees_data = [
+    (1, 'John Doe', 1, 70000.00, datetime.strptime('2020-01-15', '%Y-%m-%d')),
+    (2, 'Jane Smith', 1, 75000.00, datetime.strptime('2019-05-20', '%Y-%m-%d')),
+    (3, 'Mike Johnson', 2, 60000.00, datetime.strptime('2021-03-10', '%Y-%m-%d')),
+    (4, 'Emily Brown', 2, 62000.00, datetime.strptime('2020-08-25', '%Y-%m-%d')),
+    (5, 'Chris Lee', 3, 65000.00, datetime.strptime('2018-11-03', '%Y-%m-%d')),
+    (6, 'Sarah Wilson', 3, 68000.00, datetime.strptime('2017-09-12', '%Y-%m-%d')),
+    (7, 'David Taylor', 4, 58000.00, datetime.strptime('2019-02-28', '%Y-%m-%d')),
+    (8, 'Rachel Clark', None, 59000.00, datetime.strptime('2020-06-15', '%Y-%m-%d'))
+]
+
+employees_df = pd.DataFrame(employees_data, columns=['EMPLOYEE_ID', 'NAME', 'DEPARTMENT_ID', 'SALARY', 'HIRE_DATE'])
+
+# Displaying the dataframes
+print("Departments DataFrame:")
+print(departments_df)
+print("\nEmployees DataFrame:")
+print(employees_df)
