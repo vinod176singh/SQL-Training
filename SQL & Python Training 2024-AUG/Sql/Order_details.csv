@@ -1,0 +1,11 @@
+﻿order_id,order_date,product_name,customer_name,address,,
+1,2/16/2024,Prod1,a,varanasi,"insert into order_details values(1'45338','Prod1','a','varanasi');",
+2,2/16/2024,Prod2,b,pune,"insert into order_details values(2'45338','Prod2','b','pune');",
+3,2/16/2024,Prod3,c,hyderabad,"insert into order_details values(3'45338','Prod3','c','hyderabad');",
+4,2/16/2024,Prod4,a,mumbai,"insert into order_details values(4'45338','Prod4','a','mumbai');",
+5,2/16/2024,Prod5,b,varanasi,"insert into order_details values(5'45338','Prod5','b','varanasi');","select custmer_name ,count(order_id) as orders from Order_details group by customer_name having sum(order_id)>3"
+6,2/16/2024,Prod6,c,pune,"insert into order_details values(6'45338','Prod6','c','pune');",
+7,2/16/2024,Prod7,a,pune,"insert into order_details values(7'45338','Prod7','a','pune');",
+8,2/16/2024,Prod8,b,hyderabad,"insert into order_details values(8'45338','Prod8','b','hyderabad');",
+9,2/16/2024,Prod9,c,hyderabad,"insert into order_details values(9'45338','Prod9','c','hyderabad');",
+10,2/16/2024,Prod10,b,mumbai,"insert into order_details values(10'45338','Prod10','b','mumbai');",
