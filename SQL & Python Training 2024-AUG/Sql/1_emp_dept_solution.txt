@@ -1,0 +1,57 @@
+CREATE TABLE Departments
+(
+  DEPARTMENT_ID INT PRIMARY KEY NOT NULL,
+  NAME varchar(50),
+  LOCATION varchar(50)
+);
+
+INSERT INTO Departments (DEPARTMENT_ID, NAME, LOCATION) VALUES 
+(1, 'Engineering', 'New York'),
+(2, 'Sales', 'Los Angeles'),
+(3, 'Marketing', 'Chicago'),
+(4, 'Human Resources', 'Houston')
+;
+
+CREATE TABLE Employees (
+  EMPLOYEE_ID INT PRIMARY KEY,
+  NAME VARCHAR(50),
+  DEPARTMENT_ID INT,
+  SALARY DECIMAL(10,2),
+  HIRE_DATE DATE,
+  FOREIGN KEY (DEPARTMENT_ID) REFERENCES Departments(DEPARTMENT_ID)
+  );
+  
+  INSERT INTO Employees (EMPLOYEE_ID, NAME, DEPARTMENT_ID, SALARY, HIRE_DATE) VALUES
+  (1, 'John Doe', 1, 70000.00, '2020-01-15'),
+  (2, 'Jane Smith', 1, 75000.00, '2019-05-20'),
+  (3, 'Mike Johnson', 2, 60000.00, '2021-03-10'),
+  (4, 'Emily Brown', 2, 62000.00, '2020-08-25'),
+  (5, 'Chris Lee', 3, 65000.00, '2018-11-03'),
+  (6, 'Sarah Wilson', 3, 68000.00, '2017-09-12'),
+  (7, 'David Taylor', 4, 58000.00, '2019-02-28'),
+  (8, 'Rachel Clark', NULL, 59000.00, '2020-06-15')
+  ;
+  
+-- QUESTION 1 (QUERY TO DISPLAY THE HIGHEST SALARIES IN EACH DEPARTMENT)
+
+select e.DEPARTMENT_ID, d.NAME as DEPARTMENT_NAME, e.NAME as EMPLOYEE_NAME, e.SALARY
+from Employees e
+join Departments d on e.DEPARTMENT_ID = d.DEPARTMENT_ID
+where (e.DEPARTMENT_ID, e.salary) in (
+  select DEPARTMENT_ID, max(salary)
+  from Employees
+  group by DEPARTMENT_ID
+);
+
+-- QUESTION 2 (QUERY TO FIND EMPLOYEES YET TO BE ASSIGNED A DEPARTMENT)
+
+Select *
+from  Employees
+where DEPARTMENT_ID IS NULL ;
+
+-- QUESTION 3 (QUERY TO SHOW ALL EMPLOYEES HIRED BETWEEN 2015 AND 2017)
+
+Select *
+from  Employees
+where HIRE_DATE BETWEEN '2015-01-01' AND '2017-12-31' 
+ 
